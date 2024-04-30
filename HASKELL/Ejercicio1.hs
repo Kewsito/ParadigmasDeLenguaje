@@ -37,6 +37,63 @@ main = do
     let impares = ["uno","tres"]
 
     --10
-    "cinco": impares
+    -- "cinco": impares
 
-    print impares
+    --11
+    -- [“siete”]++ impares
+
+    --12
+    -- Resultado: PRINT IMPARES
+
+    --13
+    -- (last impares)
+    \
+    --14 Define una lista con los elementos 3,1,8,5,4,2
+    -- uno = [3,1,8,5,4,2]
+
+    --15 \\ Define una lista con los elementos 7,9,3,5,1
+    -- dos = [7,9,3,5,1] 
+
+    --16 \\ Resultado: [3,7]
+    -- nueva = [(head uno), (head dos)]
+
+    --17 \\ Divide la lista uno cada 3 elementos
+    -- (splitAt 3 uno) 
+
+    --18 \\ (uno !! 2) \\ agarra el elemento en la posicion 2 de la lista uno
+
+    --19 \\ (dos !! 0) \\ agarra el elemento en la posicion 0 de la lista dos
+
+    --20 \\ lista = [(uno !! 2), (dos !! 3)] \\ agarra el elemento en la posicion 2 de la lista uno y el elemento en la posicion 3 de la lista dos
+
+    --21 \\ sum uno \\ suma los elementos de la lista uno
+
+    --22 \\ product dos \\ multiplica los elementos de la lista dos
+
+    --23 \\ null impares \\ devuelve False si la lista impares no esta vacia
+
+    --24 \\ reverse impares \\ invierte la lista impares
+
+    --25 \\ take 2 uno \\ agarra los primeros 2 elementos de la lista uno
+
+    --26 \\ drop 2 dos \\ elimina los primeros 2 elementos de la lista dos
+
+    --27 \\ maximum dos \\ agarra el maximo de la lista dos
+
+    --28 \\ minimum impares \\ agarra por posicion alfabetica cuando se trata de strings de la lista impares
+
+    --29 \\ elem "cinco" impares \\ devuelve True si el elemento cinco esta en la lista impares
+
+    --30 \\ elem "seis" impares \\ devuelve False si el elemento "seis" esta en la lista impares
+
+    --31 \\ (not  (elem “tres” impares))
+
+    --32 \\ (notElem “tres” impares) 
+
+    --33 \\ ((elem “uno” impares) && (elem “siete” impares))
+
+    --34 \\ ((elem “uno” impares) || (elem “siete” impares))
+
+    --35 \\ (length [“Jose”, “Antonio”,”Mario”])
+
+    --36 \\ length [ [“Jose”, “Antonio”,” Mario”]])
