@@ -12,7 +12,7 @@ base:- write("# 1. Buscar medico por paciente"), nl, write("# 2. Buscar paciente
 
 opcion(1):- write("# Ingrese el nombre del medico"), read(N), buscar(N,P),writeIn(P), fail.
 opcion(2):- write("# Ingrese el nombre del paciente"), read(P), buscar(N,P),writeIn(N), fail.
-opcion(3):- write("# Terminar").
+opcion(3):- write("# Adios").
 opcion(_):- base.
 
 
