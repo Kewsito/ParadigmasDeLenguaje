@@ -15,3 +15,6 @@ insertAtom (x:xs) y
 
 -- ?Ejercicio 13
 -- * Calcular la suma de dos matrices.
+sumaMatrices :: Num a => [[a]] -> [[a]] -> [[a]]
+sumaMatrices = zipWith (zipWith (+))
+
