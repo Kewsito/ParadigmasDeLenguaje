@@ -10,12 +10,12 @@ package com.paradigmas.ejercicio1;
  */
 public class ViajeroFrecuente {
     private Integer numero;
-    private String dni;
+    private Integer dni;
     private String nombre;
     private String apellido;
     private Integer millas;
 
-    public ViajeroFrecuente(Integer numero,String dni,String nombre, String apellido, Integer millas){
+    public ViajeroFrecuente(Integer numero,Integer dni,String nombre, String apellido, Integer millas){
         this.numero= numero;
         this.dni=dni;
         this.nombre=nombre;
@@ -30,11 +30,11 @@ public class ViajeroFrecuente {
     public void setNumero(int numero){
         this.numero=numero;
     }
-    public String getDni(){
+    public Integer getDni(){
         return this.dni;
     }
     
-    public void setDni(String dni){
+    public void setDni(Integer dni){
         this.dni = dni;
     }
     
@@ -70,4 +70,9 @@ public class ViajeroFrecuente {
         this.millas-=millas;
     }
     
+    // * aca se sobre escribe el metodo tostring para que muestre los datos del objeto
+    @Override 
+    public String toString(){
+        return "Numero: "+this.numero+" DNI: "+this.dni+" Nombre: "+this.nombre+" Apellido: "+this.apellido+" Millas: "+this.millas;
+    }
 }
