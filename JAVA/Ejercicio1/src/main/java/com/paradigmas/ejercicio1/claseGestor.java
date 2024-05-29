@@ -2,7 +2,6 @@ package com.paradigmas.ejercicio1;
 import java.util.ArrayList; 
 
 // *importo la clase viajero frecuente 
-import com.paradigmas.ejercicio1.ViajeroFrecuente;
 public class claseGestor {
     private Integer cantidad;
     private ArrayList <ViajeroFrecuente> viajeros;
@@ -57,8 +56,9 @@ public class claseGestor {
 
     public void canjearMillas(int dni, int cantmillas){
         for (ViajeroFrecuente viajeros : viajeros){
-            if (viajeros.getDni()==dni){
+            if (viajeros.getDni().equals(dni)){
                 viajeros.canjearMillas(cantmillas);
+                System.out.println("El viajero con dni"+viajeros.getDni()+"tiene "+viajeros.getMillas()+" millas disponibles");
             }else{
                 System.out.println("No se encuentra registrado el dni");
             }

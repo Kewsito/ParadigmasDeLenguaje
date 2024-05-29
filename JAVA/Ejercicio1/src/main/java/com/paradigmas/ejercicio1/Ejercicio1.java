@@ -4,8 +4,6 @@
 
 package com.paradigmas.ejercicio1;
 
-import com.paradigmas.ejercicio1.claseGestor;
-import com.paradigmas.ejercicio1.ViajeroFrecuente;
 
 import java.util.Scanner;
 
@@ -74,9 +72,15 @@ public class Ejercicio1 {
                     break;
                 case 5:
                     // Código para canjear millas
+                    System.out.println("Ingrese el dni del viajero");
+                    dni = op.nextInt();
+                    System.out.println("Ingrese las millas del viajero");
+                    millas = op.nextInt();
+                    gestor.canjearMillas(dni, millas);
                     break;
                 case 6:
                     // Código para mostrar el mejor viajero
+                    gestor.mejorViajero();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
