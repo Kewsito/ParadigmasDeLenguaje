@@ -31,21 +31,28 @@ public class claseGestor {
     }
 
     public int consultarMillas(Integer dni){
+        int millas = -1;
         for(ViajeroFrecuente viajeros : viajeros){
-            if (viajeros.getDni() == dni){
-                return viajeros.getMillas();
+            if (viajeros.getDni().equals(dni)){
+                millas = viajeros.getMillas();
+                return millas;
             }
         }
-        return 0; // or any other default value
+        return millas;
     }
-    public void acumularMillas(int dni, int cantmillas){
+    public int acumularMillas(int dni, int cantmillas){
+        int millas = -1;
         for (ViajeroFrecuente viajeros : viajeros){
-            if (viajeros.getDni()==dni){
+            if (viajeros.getDni().equals(dni)){
+                millas = viajeros.getMillas();
                 viajeros.acumularMillas(cantmillas);
+                int millasacum = viajeros.getMillas();
+                return millasacum;
             }else{
                 System.out.println("No se encuentra registrado el dni");
             }
         }
+        return millas;
     }
 
     public void canjearMillas(int dni, int cantmillas){
