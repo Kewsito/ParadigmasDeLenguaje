@@ -1,7 +1,13 @@
+package com.ejercicio2;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
 public class Campeonato {
     public static final String SEPARADOR = ",";
 	
-    public static List<Deportista>leerArchivo(String nombreArchivo)throws IOException{
+    public static List <Deportista> leerArchivo(String nombreArchivo)throws IOException{
         BufferedReader bufferLectura = null;
         List<Deportista> datos = new ArrayList<>();
         try {
@@ -10,9 +16,9 @@ public class Campeonato {
 
             while ((linea=bufferLectura.readLine()) != null) {
              // Sepapar la linea leída con el separador definido previamente
-             String[] campos = linea.split(SEPARADOR); 
-             Deportista d = new Deportista(campos[0],campos[1]);
-             datos.add(d);           
+                String[] campos = linea.split(SEPARADOR); 
+                Deportista d = new Deportista(campos[0],campos[1]);
+                datos.add(d);           
             }
         } 
         catch (IOException e) {
@@ -20,9 +26,9 @@ public class Campeonato {
         }
         finally {
          // Cierro el buffer de lectura
-         if (bufferLectura != null) {
-             bufferLectura.close();
-         }
+        if (bufferLectura != null) {
+            bufferLectura.close();
+        }
         }
         return datos;
     }
@@ -33,7 +39,17 @@ public class Campeonato {
      * @return una lista de equipos
     */
     public static List<IDeporte> creaEquipos(List<Deportista> datos, int cantidadJugadores){
-        
+        List<IDeporte> equipos = new ArrayList<>();
+        int index = 0;
+        while (index + cantidadJugadores <= datos.size()) {
+            List<Deportista> jugadores = datos.subList(index, index + cantidadJugadores);
+            Equipo equipo = new Equipo(jugadores);
+            equipos.add(equipo);
+            index += cantidadJugadores;
+        }
+        System.out.println("INGRESE EL NOMBRE DEL EQUIPO: ");
+        String nombre = System.console().readLine();
+        return equipos;
     }
     /**
     Crea los equipos con los datos pasados como parámetro
@@ -66,6 +82,6 @@ public class Campeonato {
         int cantidadJugadoresFutbol= 5;                  
     
         List<Deportista> datosFutbol= leerArchivo("./src/datos/inscriptosFutbol.csv");
-        List<Deportista> datosPinPon= leerArchivo(".src/datos/inscriptosPinPon.csv");
+        List<Deportista> datosPinPon= leerArchivo("./src/datos/inscriptosPinPon.csv");
     }        
 }
