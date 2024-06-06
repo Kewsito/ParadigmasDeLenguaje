@@ -6,6 +6,9 @@ public interface IDeporte {
     public Integer CANTIDAD_MINIMA = 2;
     
     public boolean conformar(List<Deportista> integrantes);
-    public void conformar();
     public void numerarDeportista();
+    public Object get(int index);
+    public void mostrar();
+
+    
 }

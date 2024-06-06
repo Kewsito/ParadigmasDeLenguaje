@@ -21,4 +21,10 @@ public class Deportista {
     public Integer getNumeroJugador() {
         return numeroJugador;
     }
+    public void SetNumerarJugador(int num){
+        this.numeroJugador = num;
+    }
+    public String toString(){
+        return "Nombre: "+this.nombre+" DNI: "+this.dni+ " Numero de Jugador: "+this.numeroJugador;
+    }
 }
