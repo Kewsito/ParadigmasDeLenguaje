@@ -11,15 +11,8 @@ public class Main {
         
         List<IDeporte> ListaEquiposFutbol = Campeonato.creaEquipos(Futbol, cantidadFutbol);
         List<IDeporte> ListaEquiposPinPon = Campeonato.creaParejas(PinPon);
-        Campeonato.mostrar(ListaEquiposFutbol);
-        System.out.println("1. Mostrar Equipos de futbol");
-        System.out.println("2. Mostrar Equipos de pin pon");
-        System.out.println("3. Numerar Equipo de futbol");
-        System.out.println("4. Numerar Equipo de pin pon");
-        System.out.println("5. Salir");
-        System.out.println("Ingrese una opción: ");
-        Scanner scanner = new Scanner(System.in);
-        int opc = scanner.nextInt();
+        int opc;
+        Scanner escanea = new Scanner(System.in);
         do {
             // Menu de opciones
             System.out.println("1. Mostrar Equipos de futbol");
@@ -28,41 +21,33 @@ public class Main {
             System.out.println("4. Numerar Equipo de pin pon");
             System.out.println("5. Salir");
             System.out.println("Ingrese una opción: ");
-            
+            opc = escanea.nextInt();
             // Leer la opción ingresada por el usuario
             
             switch (opc) {
-                case 1:
+                case 1 -> {
                     System.out.println("Equipos de futbol:");
                     System.out.println("------------------------");
                     Campeonato.mostrar(ListaEquiposFutbol);
-                    System.out.println();
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Equipos de pin pon");
                     System.out.println("------------------------");
                     Campeonato.mostrar(ListaEquiposPinPon);
                     System.out.println();
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Numeracion Equipos de futbol");
                     Campeonato.numerar(ListaEquiposFutbol);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Numeracion Equipos de pin pon");
                     Campeonato.numerar(ListaEquiposPinPon);
-                    break;
-                case 5:
-                    System.exit(0);
-                    scanner.close();
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    break;
+                }
+
+                default -> System.out.println("Opción no válida");
             }
-
-
-        } while (opc != 4);
-            
-    }
+        }while (opc != 4);
+        escanea.close();
+        }
     }

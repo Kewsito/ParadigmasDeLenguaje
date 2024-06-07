@@ -7,8 +7,6 @@ public interface IDeporte {
     
     public boolean conformar(List<Deportista> integrantes);
     public void numerarDeportista();
-    public Object get(int index);
     public void mostrar();
-
     
 }
