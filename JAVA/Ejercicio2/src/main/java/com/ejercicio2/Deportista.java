@@ -4,7 +4,7 @@ public class Deportista {
     private String dni;
     private Integer numeroJugador;
 
-    public Deportista(String nombre, String dni) {
+    public Deportista(String nombre, String dni) throws exceptionDeportista{
         this.dni = dni;
         this.nombre = nombre;
         this.numeroJugador = null;

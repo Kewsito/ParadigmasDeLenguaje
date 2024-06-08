@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, exceptionDeportista {
         int cantidadFutbol=5;
-        List<Deportista> Futbol= Campeonato.leerArchivo("C:\\Users\\Kewsito\\Desktop\\GITHUB\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosFutbol.csv");
-        List<Deportista> PinPon= Campeonato.leerArchivo("C:\\Users\\Kewsito\\Desktop\\GITHUB\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosPinPon.csv");
+        List<Deportista> Futbol= Campeonato.leerArchivo("E:\\Github\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosFutbol.csv");
+        List<Deportista> PinPon= Campeonato.leerArchivo("E:\\Github\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosPinPon.csv");
         
         List<IDeporte> ListaEquiposFutbol = Campeonato.creaEquipos(Futbol, cantidadFutbol);
         List<IDeporte> ListaEquiposPinPon = Campeonato.creaParejas(PinPon);
@@ -44,7 +44,9 @@ public class Main {
                     System.out.println("Numeracion Equipos de pin pon");
                     Campeonato.numerar(ListaEquiposPinPon);
                 }
-
+                case 5 -> {
+                    escanea.close();
+                }
                 default -> System.out.println("Opción no válida");
             }
         }while (opc != 4);
