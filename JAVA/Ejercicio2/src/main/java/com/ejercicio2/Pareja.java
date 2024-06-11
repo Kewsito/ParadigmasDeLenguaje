@@ -14,12 +14,13 @@ public class Pareja implements IDeporte {
 
     @Override
     public boolean conformar(List<Deportista> integrantes) {
-        if (integrantes == null || integrantes.size() < CANTIDAD_MINIMA) {
-            return false; 
-        }else {
+        if (integrantes.size() == CANTIDAD_MINIMA) {
             this.deportista1 = integrantes.get(0);
             this.deportista2 = integrantes.get(1);
-            return true;
+            return true; 
+        }else {
+            
+            return false;
         }
     }
 

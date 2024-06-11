@@ -19,17 +19,12 @@ public class Campeonato {
             while ((linea = bufferLectura.readLine()) != null) {
                 // Sepapar la linea leída con el separador definido previamente
                 String[] campos = linea.split(SEPARADOR);
-                if (campos.equals(null)) {
-                    throw new exceptionDeportista("Se ingresaron nombre y dni vacios");
-                }
                 Deportista d = new Deportista(campos[0], campos[1]);
                 datos.add(d);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        }
-
-        finally {
+        } finally {
             // Cierro el buffer de lectura
             if (bufferLectura != null) {
                 bufferLectura.close();
@@ -45,27 +40,35 @@ public class Campeonato {
      * @param cantidadJugadores cantidad de jugadores que conforman un equipo
      * @return una lista de equipos
      */
-    public static List<IDeporte> creaEquipos(List<Deportista> datos, int cantidadJugadores) throws exceptionDeportista {
+
+    public static List<IDeporte> creaEquipos(List<Deportista> datos, int cantidadJugadores)
+            throws exceptionDeportista {
         List<IDeporte> equipos = new ArrayList<>();
         int index = 1;
         List<Deportista> EquipoAConformar = new ArrayList<>();
         try {
+            Equipo e = new Equipo(EquipoAConformar);
             for (Deportista d : datos) {
-                if (!EquipoAConformar.contains(d)) {
-                    EquipoAConformar.add(d);
-                } else {
-                        Equipo e = new Equipo(EquipoAConformar, "Equipo " + index);
-                        if(e.conformar(EquipoAConformar)){
-                            equipos.add(e);
-                            index++;
-                            EquipoAConformar = new ArrayList<>();
-                        }
+                if (EquipoAConformar.size() < cantidadJugadores) {
+                    if (!EquipoAConformar.contains(d)) {
+                        EquipoAConformar.add(d);
                     }
                 }
+                if (e.conformar(EquipoAConformar)) {
+                    equipos.add(e);
+                    index++;
+                    EquipoAConformar = new ArrayList<>();
+                    // System.out.println("El equipo "+ index + " se conformo correctamente");
+                }
             }
-            catch (exceptionDeportista e) {
-                throw new exceptionDeportista( "es diferente a 5");
+            if (!e.conformar(EquipoAConformar)) {
+                throw new exceptionDeportista("El equipo " + index
+                        + " no tiene la cantidad de deportistas suficientes para conformar un equipo");
+            }
+        } catch (exceptionDeportista e) {
+            System.err.println("Error " + e.getMessage());
         }
+
         return equipos;
     }
 
@@ -78,25 +81,26 @@ public class Campeonato {
     public static List<IDeporte> creaParejas(List<Deportista> datos) throws exceptionDeportista {
         List<IDeporte> parejas = new ArrayList<>();
         List<Deportista> ParejaAConformar = new ArrayList<>();
+        int index = 1;
         try {
+            Pareja p = new Pareja();
             for (Deportista d : datos) {
-                if (!ParejaAConformar.contains(d)) {
+                if (!ParejaAConformar.contains(d) && ParejaAConformar.size() < 2) {
                     ParejaAConformar.add(d);
-                } else {
-                    Pareja p = new Pareja();
-
-                    if (p.conformar(ParejaAConformar)) {
-                        parejas.add(p);
-                        ParejaAConformar = new ArrayList<>();
-                    } else {
-                        throw new exceptionDeportista("Faltan integrantes");
-                    }
+                }
+                if (p.conformar(ParejaAConformar)) {
+                    index++;
+                    parejas.add(p);
+                    ParejaAConformar = new ArrayList<>();
                 }
             }
-        } catch (exceptionDeportista e) {
-            System.out.println(e.getMessage());
+            if (!p.conformar(ParejaAConformar)) {
+                throw new exceptionDeportista(" La pareja " + index
+                        + " no tiene la cantidad de deportistas suficientes para conformar una pareja");
+            }
+        } catch (Exception p) {
+            System.err.println("Error " + p.getMessage());
         }
-
         return parejas;
     }
 
@@ -105,7 +109,7 @@ public class Campeonato {
      * 
      * @param datos
      */
-
+    
     public static void numerar(List<IDeporte> datos) {
         int c = 1;
         for (IDeporte d : datos) {
@@ -129,13 +133,10 @@ public class Campeonato {
 
     public static void mostrar(List<IDeporte> datos) {
         int c = 1;
-        for (IDeporte d : datos)
-            if (d instanceof Pareja) {
-                System.err.println("Pareja numero: " + c);
-                d.mostrar();
-                c++;
-            } else {
-                d.mostrar();
-            }
+        for (IDeporte d : datos) {
+            System.err.println("Equipo numero: " + c);
+            d.mostrar();
+            c++;
+        }
     }
 }

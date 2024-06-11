@@ -6,11 +6,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException, exceptionDeportista {
         int cantidadFutbol=5;
+        
         List<Deportista> Futbol= Campeonato.leerArchivo("E:\\Github\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosFutbol.csv");
         List<Deportista> PinPon= Campeonato.leerArchivo("E:\\Github\\ParadigmasDeLenguaje\\JAVA\\Ejercicio2\\src\\datos\\inscriptosPinPon.csv");
         
         List<IDeporte> ListaEquiposFutbol = Campeonato.creaEquipos(Futbol, cantidadFutbol);
         List<IDeporte> ListaEquiposPinPon = Campeonato.creaParejas(PinPon);
+        //Campeonato.mostrar(ListaEquiposFutbol);
+        //Campeonato.numerar(ListaEquiposFutbol);
         int opc;
         Scanner escanea = new Scanner(System.in);
         do {
@@ -45,8 +48,8 @@ public class Main {
                     Campeonato.numerar(ListaEquiposPinPon);
                 }
                 case 5 -> {
-                    escanea.close();
-                }
+                    System.out.println("Saliendo...");
+                    System.exit(0);}
                 default -> System.out.println("Opción no válida");
             }
         }while (opc != 4);

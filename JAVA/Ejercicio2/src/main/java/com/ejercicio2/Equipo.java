@@ -7,9 +7,9 @@ public class Equipo implements IDeporte {
     private String Nombre;
     private List<Deportista> jugadores;
 
-    public Equipo(List<Deportista> jugadores, String nombre) {
+    public Equipo(List<Deportista> jugadores){
         this.jugadores = jugadores;
-        this.Nombre = nombre;
+        this.Nombre = null;
     }
 
     public String toString() {
@@ -31,11 +31,12 @@ public class Equipo implements IDeporte {
     @Override
     public boolean conformar(List<Deportista> integrantes) {
 
-        if (integrantes == null || integrantes.size() < 5) {
+        if (integrantes.size() !=5) {
+            return false;
+            } 
+            else {
             this.jugadores = integrantes;
             return true;
-        } else {
-            return false;
         }
     }
 
@@ -60,9 +61,8 @@ public class Equipo implements IDeporte {
 
     @Override
     public void mostrar() {
-        System.out.println(this.Nombre);
         for (Deportista d : this.jugadores) {
-            System.out.println(" Nombre: " + d.getNombre() + " DNI: " + d.getDni());
+            System.out.println(d);
         }
     }
 
